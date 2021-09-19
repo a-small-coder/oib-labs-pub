@@ -7,6 +7,9 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import { Link } from "react-router-dom";
+import { Redirect, Route } from 'react-router';
+import { connect } from 'react-redux';
+import { setCurrentUserAC, setIsAuthAC, setUserDataAC } from '../redux/auth-reducer';
 const Profile=(props)=>{
 
     const paperStyle={padding :20, maxWidth: "500px", margin:"120px auto 0 auto"}
@@ -16,7 +19,12 @@ const Profile=(props)=>{
     const [data, setData] = React.useState(null)
 
     const hadleExit = () => {
+        props.setIsAuth(false)
+        props.setCurrentUser(null)
+    }
 
+    if (!props.auth.isAuth){
+        return <Redirect to="/slug2/login"/>
     }
 
     return(
@@ -39,7 +47,12 @@ const Profile=(props)=>{
                         <Typography component="div" variant="h6">
                             Ваш телефон: {data}
                         </Typography>
-                        <Button sx={{ ml: "auto", mr: "auto", mt: 2 }} variant="outlined" onClick={hadleExit}><Link to="/slug2/login">Выйти</Link></Button>
+                        <Button sx={{ ml: "auto", mr: "auto", mt: 2 }} variant="outlined" onClick={hadleExit}>
+                            <Link to="/slug2/login">Выйти</Link>
+                        </Button>
+                        <Button sx={{ ml: "auto", mr: "auto", mt: 2 }} variant="outlined" onClick={()=>{}}>
+                            <Link to="/slug2/reset-password">Сменить пароль</Link>
+                        </Button>
 
                 </Box>
             </Paper>
@@ -47,4 +60,24 @@ const Profile=(props)=>{
     )
 }
 
-export default Profile
+let mapStateToProps = (state)=>{
+    return {
+        auth: state.auth
+    }
+}
+let mapDispatchToProps = (dispatch)=>{
+    return{
+        setIsAuth: (isAuth) => {
+            dispatch(setIsAuthAC(isAuth));
+        },
+        setCurrentUser: (currentUser) => {
+            dispatch(setCurrentUserAC(currentUser));
+        },
+        setUserData: (userData) => {
+            dispatch(setUserDataAC(userData));
+        }
+        
+    }
+}
+const ProfileContainer = connect(mapStateToProps, mapDispatchToProps)(Profile);
+export default ProfileContainer;

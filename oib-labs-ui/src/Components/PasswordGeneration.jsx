@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { Card } from '@material-ui/core'
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
+import createPassword from '../utils/lab1';
 
 
 function showResult(show, data) {
@@ -40,14 +41,17 @@ export default function PasswordGeneration() {
     const handleSubmit = (event) => {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
+        const res = createPassword(formData.get('email'))
+
         setNeedShowResult(true)
         setData({
-            q: null,
-            password: null
+            q: res[1],
+            password: res[0]
         })
         // eslint-disable-next-line no-console
         console.log({
-            email: formData.get('email'),
+            userId: formData.get('email'),
+            passLength: res[0].length
         });
     };
 
