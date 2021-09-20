@@ -1,7 +1,7 @@
 export const latin = "abcdefghijklmnopqrstuvwxyz"
 export const kiril = "абвгдеёжзийклмнопрстуфхцчшщьъыэюя"
 export const numbers = '1234567890'
-export const chars = "!@#$%^&*()_+=-`~/.,<>?\\|\"№;%:[]{}"
+export const chars = "!@#$%^&*()_+=-`/.,<>?\\|\"№;%:[]{}"
 
 const PT_INT = "int"
 const PT_LATIN = "latin"

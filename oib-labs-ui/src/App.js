@@ -6,6 +6,7 @@ import Profile from './Components/Profile'
 import './App.css'
 import Lab3 from "./Pages/Lab3";
 import Lab2Container from "./Pages/Lab2";
+import DocsContainer from "./Components/Docs";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Route path="/slug2" component={Lab2Container}/>
       <Route path="/slug3/" component={Lab3}/>
       <Route path="/profile" component={Profile}/>
+      <Route path="/docs" component={DocsContainer}/>
       <Redirect path="" to="/slug1"/>
     </BrowserRouter>
   );

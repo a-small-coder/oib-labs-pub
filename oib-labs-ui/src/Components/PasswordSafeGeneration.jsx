@@ -7,7 +7,7 @@ import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
-import { Card } from '@material-ui/core'
+import { Alert, Card } from '@material-ui/core'
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 
 function PasswordSafeGeneration(props) {
@@ -44,6 +44,7 @@ function PasswordSafeGeneration(props) {
                 autoFocus
                 sx={{ backgroundColor: "#fff" }}
             />
+            {props.error[0] ? <Alert severity="error" sx={{mt: 2 }}>{props.error[1]}</Alert> : null}
 
             <Button
                 type="submit"
