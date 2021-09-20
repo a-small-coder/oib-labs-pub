@@ -5,6 +5,7 @@ import TitleBlock from '../Components/TitleBlock';
 import SettingsCard from '../Components/SettingsCard';
 import PasswordSafeGeneration from '../Components/PasswordSafeGeneration'
 import { Box } from '@material-ui/system';
+import createPassword from '../utils/lab3';
 
 function Lab3(props) {
     const paperStyle={padding :20, margin:"80px auto 0 auto"}
@@ -19,18 +20,16 @@ function Lab3(props) {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
         setNeedShowResult(true)
-        setData({
-            q: null,
-            password: null
-        })
-        // eslint-disable-next-line no-console
-        console.log({
+        const dataForm = {
             P: formData.get('P'),
             V: formData.get('V'),
             T: formData.get('T'),
-            checked: checked,
-        });
-        setPassword("")
+            appliedPools: checked,
+        }
+        setData(dataForm)
+        // eslint-disable-next-line no-console
+        console.log("data", dataForm);
+        setPassword(createPassword(dataForm))
     };
 
     const settingsList = [
