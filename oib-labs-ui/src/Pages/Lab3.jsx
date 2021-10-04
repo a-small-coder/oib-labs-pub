@@ -7,7 +7,7 @@ import PasswordSafeGeneration from '../Components/PasswordSafeGeneration'
 import { Box } from '@material-ui/system';
 import createPassword from '../utils/lab3';
 
-function validate(formData){
+export function validate(formData){
     let message = ""
 
     let count = 0
@@ -24,7 +24,6 @@ function validate(formData){
     if(formData.P == "" || formData.V == "" || formData.T == "" ){
         return message += "Заполните все поля"
     }
-    debugger
 
     return message
 }
@@ -48,7 +47,6 @@ function Lab3(props) {
             T: formData.get('T'),
             appliedPools: checked,
         }
-        debugger
         const message = validate(dataForm)
         if (message.length > 0){
             setShowAlert([true, message])

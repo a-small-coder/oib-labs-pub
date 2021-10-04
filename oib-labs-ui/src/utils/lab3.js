@@ -30,7 +30,6 @@ export default function createPassword(data){
         console.log(index)
         password += pool.substring(index, index+1)
     }
-    // debugger
     returnData.S = S
     returnData.A = pool.length
     returnData.L = passwordLength

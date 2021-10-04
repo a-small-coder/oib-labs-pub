@@ -64,7 +64,7 @@ function Lab2(props) {
             }
         }
         else {
-            setError({show: true, message: "Имя польщователя уже занято"})
+            setError({show: true, message: "Имя пользователя уже занято"})
         }
     }
 
