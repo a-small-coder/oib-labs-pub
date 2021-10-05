@@ -14,16 +14,31 @@ export default function main(arr_of_const, some_text) {
     let KSumm = 0 // методом контрольных сумм
     let SummKodBukvOtkr = 0 // методом хеширования с применением гаммирования
 
-    let psevdo_random_number = t0
+    let index_gamma = 0
+    const gamma_list = getGamma(t0, a, b, c)
     for (let i = 0; i < textLength; i++){
         const char_in_ASCII = some_text.charCodeAt(i) // берем код символа строки в ASCII
         K += char_in_ASCII
 
-        psevdo_random_number = (a * psevdo_random_number + b) % c  
-        const result_symbol_code = char_in_ASCII + psevdo_random_number 
+        const result_symbol_code = (char_in_ASCII ^ gamma_list[index_gamma]) 
         SummKodBukvOtkr += result_symbol_code // набираем сумму кодов для второго способа
+        index_gamma += 1
+        if (index_gamma === 8){
+            index_gamma = 0
+        }
     }
     K < MaxVal ? KSumm = K : KSumm = K % c // определение контрольной суммы первым способом
     SummKodBukvOtkr %= c 
     return {KSumm, SummKodBukvOtkr}
+}
+
+// получение гамма дополнений длины 8
+function getGamma(initial_number, a, b, c) {
+    let gamma_list = []
+    let psevdo_random_number = (a * initial_number + b) % c // получение начального псевдослучайного числа
+    for (let i=0; i < 8; i++){
+        psevdo_random_number = (a * psevdo_random_number + b) % c
+        gamma_list.push(psevdo_random_number)
+    }
+    return gamma_list
 }

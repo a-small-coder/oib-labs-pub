@@ -15,7 +15,7 @@ function Lab4(props) {
         { id: 1, value: 17, name: "a" },
         { id: 2, value: 3, name: "b" },
         { id: 3, value: 256, name: "c" },
-        { id: 1, value: 191, name: "t0" },
+        { id: 4, value: 191, name: "t0" },
     ]
     const defaultResult = {SummKodBukvOtkr: "", KSumm: ""}
     const [needShowResult, setNeedShowResult] = React.useState(false)
@@ -38,7 +38,7 @@ function Lab4(props) {
             setShowAlert([false, ""])
         }
         const result = main(default_settings, dataForm.P)
-        
+        console.log("result", result)
         setData(result)
         setNeedShowResult(true)
         // eslint-disable-next-line no-console
