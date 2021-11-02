@@ -1,7 +1,7 @@
 import { randomInteger, latin, kiril, numbers,chars } from './lab1'
 const P = 0.0001
 const T = 10  // дней
-const V = 30  // 100 за 1 день
+const V = 30  // 30 за 1 день
 const latin_upper = latin.toUpperCase()
 const kiril_upper = kiril.toUpperCase()
 
